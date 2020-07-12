@@ -32,7 +32,7 @@ msgInit2 db ' INGRESE LA PALABRA: $'
   
 msgSi db '  >> Si es Palindromo <<  $' 
 
-msgNo db '  >> Si es Palindromo <<  $'
+msgNo db '  >> NO es Palindromo <<  $'
 
  
 msgError db '   >> HA EXCEDIDO El MAXIMO DE 40 CARACTERES << $' 
