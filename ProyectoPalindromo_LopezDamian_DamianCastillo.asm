@@ -25,6 +25,9 @@ name "Palindromo"
 
 
 ; Mensajes
+
+numChar db ? ;cantidad de caracteres ingresados
+
 msgInit1 db '   ***** INGRESE MAXIMO 40 CARACTERES ***** $' 
 
 msgInit2 db ' INGRESE LA PALABRA: $'
@@ -52,7 +55,7 @@ MOV AX,0
 
 
 main:
-MOV CX,0 ;iniciar el contador de numero maximo 40 caracteres
+MOV CX,0 ;iniciar el contador de numero maximo 40 caracteres, CL Cantidad de caracteres
 CALL SALTO     ;Salto de linea y retorno de carro
 LEA DX,msgInit1        ;load efective address---> coloca contenido de variable msgInit1 en dx
 CALL MENSAJE           ;imprimir mensaje
@@ -91,6 +94,8 @@ JMP INPUT ;Recibir el siguiente caracter
  
  
 VERIFICAR: ;(NO IMPLEMENTADO) Verificar si es Palindromo
+MOV numChar,CL ;Guardamos la cantidad de caracteres ingresados
+
 
 JMP IS     ;es Palindromo  
 
