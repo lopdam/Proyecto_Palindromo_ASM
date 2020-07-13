@@ -65,8 +65,20 @@ INPUT:      ;Recibe los caracteres y empieza a verificar cuando se presione (ENT
 MOV AH,1    ;Set para recibir un caracter desde la entrada standart
 INT 21H
 CMP AL,13   ;Comparamos si existe un salto de line, si es asi comenzamos a comparar
-JNE GUARDAR    ;guardar el numero
-JMP VERIFICAR  ; Verificar si es Palindromo cuando se haya insertado un enter(salto de linea)
+JE VERIFICAR  ; Verificar si es Palindromo cuando se haya insertado un enter(salto de linea)   
+
+MOV AH,00H  ;limpiar parte alta de ax
+CMP AL,97 ; comprobamos si la letra es minuscula
+JL GUARDAR    ;guardar el numero, si no es minuscula
+
+
+UPPERCASE: ;Si es una letra minuscula la transformamos a mayuscula.
+MOV AH,00H  ;limpiar parte alta de ax
+CMP AL,122  ;
+JNLE GUARDAR ;SI no es una letra pasamos a guardarla
+SUB AL,32 ;restamos 32 posiciones ne ASCII para que se tranforme a mayuscula
+
+
 	   
 	   	   
 GUARDAR:  ;Guarda el caracter para posteriormente verificar
